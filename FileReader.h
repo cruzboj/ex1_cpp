@@ -1,16 +1,36 @@
 #ifndef FILEREADER_H
 #define FILEREADER_H
 
-#include <iostream>
-
 #include <fstream>
 #include <cstring>
+
+
+class Character{
+public:
+    char * name;
+    char * specialAbility;
+    int age;
+    Character * next;
+
+    // Constructor
+    // Character(const char* name, const char* specialAbility, int age)
+    //     : age(age), next(nullptr) {
+    //     this->name = strdup(name);
+    //     this->specialAbility = strdup(specialAbility);
+    // }
+
+    // // Destructor
+    // ~Character() {
+    //     delete[] name;
+    //     delete[] specialAbility;
+    // }
+};
 
 class TVShow{
 public:
     char* showName;
-    Character* characters; // Head of the linked list of characters
-    TVShow* next;          // Pointer to the next TVShow in the list
+    Character * Next_Character; // Head of the linked list of characters
+    TVShow* next_show;          // Pointer to the next TVShow in the list
 
     // Constructor
     // TVShow(const char* showName) : characters(nullptr), next(nullptr) {
@@ -55,28 +75,6 @@ public:
     //     }
     // }
 };
-
-class Character{
-public:
-    char * name;
-    char * specialAbility;
-    int age;
-    Character * next;
-
-    // Constructor
-    // Character(const char* name, const char* specialAbility, int age)
-    //     : age(age), next(nullptr) {
-    //     this->name = strdup(name);
-    //     this->specialAbility = strdup(specialAbility);
-    // }
-
-    // // Destructor
-    // ~Character() {
-    //     delete[] name;
-    //     delete[] specialAbility;
-    // }
-};
-
 class FileReader {
 public:
     FileReader(const char* filename);
