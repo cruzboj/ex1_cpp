@@ -13,7 +13,7 @@ public:
     Character * next;
 
     // Constructor
-    // Character(const char* name, const char* specialAbility, int age)
+    Character(const char* name, const char* specialAbility, int age);
     //     : age(age), next(nullptr) {
     //     this->name = strdup(name);
     //     this->specialAbility = strdup(specialAbility);
@@ -33,7 +33,7 @@ public:
     TVShow* next_show;          // Pointer to the next TVShow in the list
 
     // Constructor
-    // TVShow(const char* showName) : characters(nullptr), next(nullptr) {
+    TVShow(const char* showName);// : characters(nullptr), next(nullptr) {
     //     this->showName = strdup(showName);
     // }
 
