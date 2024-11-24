@@ -3,29 +3,31 @@
 
 #include <fstream>
 #include <cstring>
+#include <iostream>
 
 //g++ main.cpp FileReader.cpp -o ...
 class Character {
+public:
     char* name;   // Character name
     char* SPA;    // Special Power Ability (SPA)
     int age;      // Character age
     Character* next; // Pointer to the next character
 
-public:
     Character() : name(nullptr), SPA(nullptr), age(-1), next(nullptr) {}
     ~Character();
 
     void setCharacter(const char* charName, int charAge, const char* spa);
     void setNext(Character* nextChar) { next = nextChar; }
     Character* getNext() const { return next; }
+
 };
 
 class TvShow {
+public:
     char* name;       // Show name
     Character* cast;  // Pointer to the head of the character list
     TvShow* next;     // Pointer to the next show (for a linked list of shows)
 
-public:
     TvShow() : name(nullptr), cast(nullptr), next(nullptr) {}
     ~TvShow();
 
@@ -35,6 +37,7 @@ public:
     
     TvShow* getNext() const { return next; }
     void setNext(TvShow* nextShow) { next = nextShow; }
+
 };
 
 class linklist {

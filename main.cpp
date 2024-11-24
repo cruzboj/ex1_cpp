@@ -1,4 +1,3 @@
-#include <iostream>
 #include <cstdlib>
 #include <cstring>
 #include "FileReader.h"
@@ -6,6 +5,8 @@
 //THIS IS AN EXAMPLE FILE - YOU CAN DELETE EVERYTHING HERE
 
 int main() {
+    linklist TvShow;
+
     FileReader reader("characters.txt");
     if (!reader.isOpen()) {
         std::cout << "Failed to open characters.txt" << std::endl;
@@ -62,10 +63,11 @@ int main() {
         // Now you have showName, characterName, age, specialAbility
         // TODO: Add the character to the appropriate TVShow linked list
         // Remember to delete showName, characterName, and specialAbility when done
-
+        TvShow.addShow(showName,characterName,age,specialAbility);
         // For demonstration purposes, let's just print them
-        std::cout << "Show: " << showName << ", Character: " << characterName
-                  << ", Age: " << age << ", Ability: " << specialAbility << std::endl;
+        // std::cout << "Show: " << showName << ", Character: " << characterName
+        //           << ", Age: " << age << ", Ability: " << specialAbility << std::endl;
+
         
         // Don't forget to free the allocated memory
         delete[] showName;
@@ -74,5 +76,7 @@ int main() {
         delete[] line;
     }
 
+    TvShow.printShows();
+    
     return 0;
 }

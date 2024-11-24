@@ -69,11 +69,11 @@ Ben 10,Stinkfly,Unknown,Lepidopterran Alien
 Ben 10,Wildmutt,Unknown,Vulpimancer Alien
 Ben 10,Greymatter,Unknown,Galvan Alien
 Ben 10,Cannonbolt,Unknown,Arburian Pelarota Alien
-Avatar Aang,112,Avatar
-Avatar Katara,14,Waterbender
-Avatar Sokka,15,Warrior
-Avatar Toph,12,Earthbender
-Avatar Zuko,16,Firebender
+Avatar,Aang,112,Avatar
+Avatar,Katara,14,Waterbender
+Avatar,Sokka,15,Warrior
+Avatar,Toph,12,Earthbender
+Avatar,Zuko,16,Firebender
 Pokémon,Lance,25,Dragon Master
 Pokémon,Koga,40,Ninja Trainer
 Pokémon,Sabrina,21,Psychic Gym Leader

@@ -51,6 +51,24 @@ void linklist::addShow(const char* showName, const char* charName, int charAge, 
     }
 }
 
+void linklist::printShows() const {
+    TvShow* tempShow = head;
+    while (tempShow) {
+        std::cout << "Show: " << tempShow->name << std::endl;
+
+        // Print the list of characters in the show
+        Character* tempCharacter = tempShow->cast;
+        while (tempCharacter) {
+            std::cout << "  Character: " << tempCharacter->name
+                      << ", Age: " << tempCharacter->age
+                      << ", Special Ability: " << tempCharacter->SPA << std::endl;
+            tempCharacter = tempCharacter->next;
+        }
+
+        tempShow = tempShow->next;
+    }
+}
+
 //show class
 TvShow::~TvShow() {
     delete[] name;
