@@ -46,7 +46,8 @@ int main() {
             continue;
         }
 
-        int age = atoi(token);
+        char * age = new char[strlen(token) + 1];
+        strcpy(age,token);
 
         token = strtok(NULL, ",");
         if (token == NULL) {

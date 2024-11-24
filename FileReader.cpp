@@ -4,14 +4,15 @@ Character::~Character() {
     delete[] name;
     delete[] SPA;
 }
-void Character::setCharacter(const char* charName, int charAge, const char* spa) {
+void Character::setCharacter(const char* charName, char * charAge, const char* spa) {
     name = new char[strlen(charName) + 1];
     strcpy(name, charName);
 
     SPA = new char[strlen(spa) + 1];
     strcpy(SPA, spa);
 
-    age = charAge;
+    age = new char[strlen(charAge) + 1]; 
+    strcpy(age,charAge);
 }
 
 //linkedlist
@@ -24,7 +25,7 @@ linklist::~linklist() {
     }
 }
 
-void linklist::addShow(const char* showName, const char* charName, int charAge, const char* spa) {
+void linklist::addShow(const char* showName, const char* charName, char * charAge, const char* spa) {
     TvShow* temp = head;
 
     while (temp) {
@@ -87,7 +88,7 @@ void TvShow::setName(const char* showName) {
     strcpy(name, showName);
 }
 
-void TvShow::addCharacter(const char* charName, int charAge, const char* spa) {
+void TvShow::addCharacter(const char* charName, char * charAge, const char* spa) {
     Character* newCharacter = new Character();
     newCharacter->setCharacter(charName, charAge, spa);
     newCharacter->setNext(nullptr);

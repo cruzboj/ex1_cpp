@@ -10,13 +10,13 @@ class Character {
 public:
     char* name;   // Character name
     char* SPA;    // Special Power Ability (SPA)
-    int age;      // Character age
+    char* age;      // Character age
     Character* next; // Pointer to the next character
 
-    Character() : name(nullptr), SPA(nullptr), age(-1), next(nullptr) {}
+    Character() : name(nullptr), SPA(nullptr), age(nullptr), next(nullptr) {}
     ~Character();
 
-    void setCharacter(const char* charName, int charAge, const char* spa);
+    void setCharacter(const char* charName, char * charAge, const char* spa);
     void setNext(Character* nextChar) { next = nextChar; }
     Character* getNext() const { return next; }
 
@@ -33,7 +33,7 @@ public:
 
     void setName(const char* showName);
     const char* getName() const { return name; }
-    void addCharacter(const char* charName, int charAge, const char* spa);
+    void addCharacter(const char* charName, char * charAge, const char* spa);
     
     TvShow* getNext() const { return next; }
     void setNext(TvShow* nextShow) { next = nextShow; }
@@ -48,7 +48,7 @@ public:
     linklist() : head(nullptr) {}
     ~linklist();
 
-    void addShow(const char* showName, const char* charName, int charAge, const char* spa);
+    void addShow(const char* showName, const char* charName, char * charAge, const char* spa);
     void printShows() const;
 };
 
