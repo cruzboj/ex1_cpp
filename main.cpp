@@ -99,7 +99,7 @@ int main() {
         cin.getline(input, 100); // Get input from user
     
     if (strcmp(input, "6") == 0) {
-            cout << "\n Terminate the program safely\n";
+            cout << "\nTerminate the program safely\n";
             break;
         } else if (strcmp(input, "1") == 0) {
         cout << "\n[INFO] This program manages TV shows and their characters.\n";
