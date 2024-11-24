@@ -75,6 +75,7 @@ int main() {
         // Don't forget to free the allocated memory
         delete[] showName;
         delete[] characterName;
+        delete[] age;
         delete[] specialAbility;
         delete[] line;
     }
@@ -107,7 +108,26 @@ int main() {
             TvShow.printShows();
         } else if (strcmp(input, "2") == 0) {
             cout << "\n[INFO] You selected to add a character. Processing...\n";
-            // Add logic for deletion here
+            char* showName = new char[100];
+            char* characterName = new char[100];
+            char * age = new char[100];
+            char* specialAbility  =new char[100];
+
+            cout << "Enter the name of the TV show: ";
+            cin.getline(showName, 100);
+            cout << "Enter the character's name: ";
+            cin.getline(characterName, 100);
+            cout << "Enter the character's age: ";
+            cin.getline(age, 100);
+            cout << "Enter the character's special ability: ";
+            cin.getline(specialAbility, 100);
+
+            TvShow.addShow(showName,characterName,age,specialAbility);
+            delete[] showName;
+            delete[] characterName;
+            delete[] age;
+            delete[] specialAbility;
+            
         }else if (strcmp(input, "3") == 0) {
             cout << "\n[INFO] You selected to delete a character. Processing...\n";
             // Add logic for deletion here
