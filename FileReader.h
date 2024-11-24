@@ -4,77 +4,52 @@
 #include <fstream>
 #include <cstring>
 
+//g++ main.cpp FileReader.cpp -o ...
+class Character {
+    char* name;   // Character name
+    char* SPA;    // Special Power Ability (SPA)
+    int age;      // Character age
+    Character* next; // Pointer to the next character
 
-class Character{
 public:
-    char * name;
-    char * specialAbility;
-    int age;
-    Character * next;
+    Character() : name(nullptr), SPA(nullptr), age(-1), next(nullptr) {}
+    ~Character();
 
-    // Constructor
-    Character(const char* name, const char* specialAbility, int age);
-    //     : age(age), next(nullptr) {
-    //     this->name = strdup(name);
-    //     this->specialAbility = strdup(specialAbility);
-    // }
-
-    // // Destructor
-    // ~Character() {
-    //     delete[] name;
-    //     delete[] specialAbility;
-    // }
+    void setCharacter(const char* charName, int charAge, const char* spa);
+    void setNext(Character* nextChar) { next = nextChar; }
+    Character* getNext() const { return next; }
 };
 
-class TVShow{
+class TvShow {
+    char* name;       // Show name
+    Character* cast;  // Pointer to the head of the character list
+    TvShow* next;     // Pointer to the next show (for a linked list of shows)
+
 public:
-    char* showName;
-    Character * Next_Character; // Head of the linked list of characters
-    TVShow* next_show;          // Pointer to the next TVShow in the list
+    TvShow() : name(nullptr), cast(nullptr), next(nullptr) {}
+    ~TvShow();
 
-    // Constructor
-    TVShow(const char* showName);// : characters(nullptr), next(nullptr) {
-    //     this->showName = strdup(showName);
-    // }
-
-    // Destructor
-    // ~TVShow() {
-    //     delete[] showName;
-
-    //     // Clean up the linked list of characters
-    //     Character* current = characters;
-    //     while (current) {
-    //         Character* toDelete = current;
-    //         current = current->next;
-    //         delete toDelete;
-    //     }
-    // }
-
-    // Method to add a character to the TV show
-    // void addCharacter(const char* name, const char* specialAbility, int age) {
-    //     Character* newCharacter = new Character(name, specialAbility, age);
-    //     if (!characters) {
-    //         characters = newCharacter;
-    //     } else {
-    //         Character* temp = characters;
-    //         while (temp->next) {
-    //             temp = temp->next;
-    //         }
-    //         temp->next = newCharacter;
-    //     }
-    // }
-
-    // Display characters ( maybe we dont need it )
-    // void displayCharacters() const {
-    //     Character* current = characters;
-    //     std::cout << "TV Show: " << showName << "\nCharacters:\n";
-    //     while (current) {
-    //         std::cout << " - " << current->name << " (Age: " << current->age
-    //                   << ", Special Ability: " << current->specialAbility << ")\n";
-    //         current = current->next;
-    //     }
-    // }
+    void setName(const char* showName);
+    const char* getName() const { return name; }
+    void addCharacter(const char* charName, int charAge, const char* spa);
+    
+    TvShow* getNext() const { return next; }
+    void setNext(TvShow* nextShow) { next = nextShow; }
 };
+
+class linklist {
+private:
+    TvShow * head;
+
+public:
+    linklist() : head(nullptr) {}
+    ~linklist();
+
+    void addShow(const char* showName, const char* charName, int charAge, const char* spa);
+    void printShows() const;
+};
+
+
 class FileReader {
 public:
     FileReader(const char* filename);

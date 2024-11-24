@@ -66,7 +66,7 @@ int main() {
         // For demonstration purposes, let's just print them
         std::cout << "Show: " << showName << ", Character: " << characterName
                   << ", Age: " << age << ", Ability: " << specialAbility << std::endl;
-
+        
         // Don't forget to free the allocated memory
         delete[] showName;
         delete[] characterName;
