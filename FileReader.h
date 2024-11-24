@@ -50,6 +50,8 @@ public:
 
     void addShow(const char* showName, const char* charName, char * charAge, const char* spa);
     void printShows() const;
+    void deleteChar(char * deletedCharacter);
+    void SearchChar(char * findCharacter) const;
 };
 
 

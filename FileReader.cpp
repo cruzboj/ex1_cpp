@@ -70,6 +70,57 @@ void linklist::printShows() const {
     }
 }
 
+void linklist::deleteChar(char * deletedCharacter){
+    TvShow* tempShow = head;
+
+    while (tempShow){
+        Character* prevCharacter = nullptr;
+        Character* tempCharacter = tempShow->cast;
+
+        while (tempCharacter){
+            if(strcmp(deletedCharacter,tempCharacter->name) == 0){
+                if (prevCharacter == nullptr) {
+                    tempShow->cast = tempCharacter->next;
+                } else {
+                    prevCharacter->next = tempCharacter->next;
+                }
+                    delete[] tempCharacter->name;
+                    delete[] tempCharacter->age;
+                    delete[] tempCharacter->SPA;
+                    std::cout << "\033[31mcharacter " << deletedCharacter << " deleted\033[0m" << std::endl;
+                    return;
+            }
+            prevCharacter = tempCharacter;
+            tempCharacter = tempCharacter->next;
+        }
+        tempShow = tempShow->next;
+    }
+    std::cout << "\033[31mcharacter was not found\033[0m" << std::endl;
+    return;
+}
+
+void linklist::SearchChar(char * findCharacter) const{
+        TvShow* tempShow = head;
+
+    while (tempShow){
+        Character* tempCharacter = tempShow->cast;
+
+        while (tempCharacter){
+            if(strcmp(findCharacter,tempCharacter->name) == 0){
+                    std::cout   << "\nShow: " << tempShow->name << std::endl;
+                    std::cout   << "  Character: " << tempCharacter->name
+                                << ", Age: " << tempCharacter->age
+                                << ", Special Ability: " << tempCharacter->SPA << std::endl;
+                    return;
+            }
+            tempCharacter = tempCharacter->next;
+        }
+        tempShow = tempShow->next;
+    }
+    std::cout << "\033[31mcharacter was not found\033[0m" << std::endl;
+    return;
+}
+
 //show class
 TvShow::~TvShow() {
     delete[] name;

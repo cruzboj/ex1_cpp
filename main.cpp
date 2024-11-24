@@ -83,6 +83,10 @@ int main() {
     //user interface
     char* input = new char[100];
     while (true) {
+            char* showName = new char[100];
+            char* characterName = new char[100];
+            char * age = new char[100];
+            char* specialAbility  =new char[100];
         // Display the menu
         cout << "\n"
             << "\033[1;32m=====================================================\n"  // Bold blue for header
@@ -104,14 +108,10 @@ int main() {
             cout << "\nTerminate the program safely\n";
             break;
         } else if (strcmp(input, "1") == 0) {
-        cout << "\n[INFO] This program manages TV shows and their characters.\n";
+        cout << "\n\033[93m[INFO] This program manages TV shows and their characters.\033[0m\n";
             TvShow.printShows();
         } else if (strcmp(input, "2") == 0) {
-            cout << "\n[INFO] You selected to add a character. Processing...\n";
-            char* showName = new char[100];
-            char* characterName = new char[100];
-            char * age = new char[100];
-            char* specialAbility  =new char[100];
+            cout << "\n\033[93m[INFO] You selected to add a character. Processing...\033[0m\n";
 
             cout << "Enter the name of the TV show: ";
             cin.getline(showName, 100);
@@ -127,18 +127,26 @@ int main() {
             delete[] characterName;
             delete[] age;
             delete[] specialAbility;
-            
+
         }else if (strcmp(input, "3") == 0) {
-            cout << "\n[INFO] You selected to delete a character. Processing...\n";
-            // Add logic for deletion here
+            cout << "\n\033[93m[INFO] You selected to delete a character. Processing...\033[0m\n";
+            cout << "Enter the character's name for Deletion: ";
+            cin.getline(characterName, 100);
+            TvShow.deleteChar(characterName);
+            delete[] characterName;
+
         } else if (strcmp(input, "4") == 0) {
-            cout << "\n[INFO] You selected to search for a character. Processing...\n";
-            // Add search logic here
+            cout << "\n\033[93m[INFO] You selected to search for a character. Processing...\033[0m\n";
+            cout << "Enter the character's name you want to search: ";
+            cin.getline(characterName, 100);
+            TvShow.SearchChar(characterName);
+            delete[] characterName;
+
         } else if (strcmp(input, "5") == 0) {
-            cout << "\n[INFO] You selected to Sort character info. Processing...\n";
+            cout << "\n\033[93m[INFO] You selected to Sort character info. Processing...\033[0m\n";
             // Add update logic here
         } else if (strcmp(input, "6") == 0) {
-            cout << "\n[INFO] You selected to update character info. Processing...\n";
+            cout << "\n\033[93m[INFO] You selected to update character info. Processing...\033[0m\n";
             // Add update logic here    
         } else {
             cout << "\n\033[31m[ERROR] Invalid input. Please try again.\033[0m\n";
