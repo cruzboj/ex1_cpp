@@ -144,7 +144,16 @@ int main() {
 
         } else if (strcmp(input, "5") == 0) {
             cout << "\n\033[93m[INFO] You selected to Sort character info. Processing...\033[0m\n";
-            // Add update logic here
+            cout << "Enter a TV Show Name:";
+            cin.getline(showName, 100);
+            cout << "choose a number for Sorting Criterion:\n"
+            <<"\n\033[33m<1>\033[0m \033[93mSort by Name\033[0m"
+            <<"\n\033[33m<2>\033[0m \033[93mSort by Age\033[0m "
+            <<"\n\033[33m<3>\033[0m \033[93mAscending Order\033[0m "
+            <<"\n\033[33m<4>\033[0m \033[93mDescending Order\033[0m\n>";
+            cin.getline(input, 100);
+            TvShow.Sort(showName,input);
+
         } else if (strcmp(input, "6") == 0) {
             cout << "\n\033[93m[INFO] You selected to update character (NOTE :: name cannot be changed!)\033[0m\n";
             cout << "Enter the character's name you want to Update: ";

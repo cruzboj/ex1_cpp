@@ -155,6 +155,82 @@ void linklist::updateChar(const char * updateCharacter,char * UpdateAge,char * U
     return;
 }
 
+void linklist::Sort(const char* showName,char* input) {
+    TvShow* tempShow = head;
+    while (tempShow) {
+        // Find the correct TV Show based on the name
+        if (strcmp(showName, tempShow->name) == 0) {
+            // Check input for sorting criterion
+            if (strcmp(input, "1") == 0) {
+                // Sorting by character name alphabetically
+                bool swapped;
+                do {
+                    swapped = false;
+                    Character* current = tempShow->cast;
+                    while (current && current->next) {
+                        Character* nextCharacter = current->next;
+
+                        // Compare names lexicographically (alphabetically)
+                        if (strcmp(current->name, nextCharacter->name) > 0) {
+                            // Swap character data: name, age, and SPA
+                            std::swap(current->name, nextCharacter->name);
+                            std::swap(current->age, nextCharacter->age);
+                            std::swap(current->SPA, nextCharacter->SPA);
+
+                            swapped = true;
+                        }
+
+                        current = current->next;
+                    }
+                } while (swapped); // Continue until no more swaps are made
+                std::cout << "Sorting by character name alphabetically complete!" << std::endl;
+            
+            }else if(strcmp(input, "2") == 0){
+                // Sorting by character age
+                bool swapped;
+                do {
+                    swapped = false;
+                    Character* current = tempShow->cast;
+                    while (current && current->next) {
+                        Character* nextCharacter = current->next;
+
+                        // Convert char* age to integers for numerical comparison
+                        int currentAge = std::stoi(current->age); // Convert current age to int
+                        int nextAge = std::stoi(nextCharacter->age); // Convert next age to int
+
+                        // Compare ages numerically
+                        if (currentAge > nextAge) {
+                            // Swap character data: name, age, and SPA
+                            std::swap(current->name, nextCharacter->name);
+                            std::swap(current->age, nextCharacter->age);
+                            std::swap(current->SPA, nextCharacter->SPA);
+
+                            swapped = true;
+                        }
+
+                        current = current->next;
+                    }
+                } while (swapped); // Continue until no more swaps are made
+                std::cout << "Sorting by character ages complete!" << std::endl;
+            }else if(strcmp(input, "3") == 0){
+                
+            }else if(strcmp(input, "4") == 0){
+                
+            }else
+                std::cout << "\033[31myou didnt choose numbers in range of 1-4\033[0m" << std::endl;
+
+            break; // Exit after sorting the specified show
+        }
+
+        tempShow = tempShow->next;  // Move to the next show
+    }
+
+    // If the show was not found, print an error message
+    if (!tempShow) {
+        std::cout << "\033[31mTV Show was not found\033[0m" << std::endl;
+    }
+}
+
 //show class
 TvShow::~TvShow() {
     delete[] name;

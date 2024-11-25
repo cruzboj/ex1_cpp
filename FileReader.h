@@ -56,8 +56,8 @@ public:
     void deleteChar(char * deletedCharacter);
     //Find and display a character by name across all TV shows.
     void SearchChar(char * findCharacter) const;
-    //
-
+    //Rearrange and update the character list of a specific TV show based on a chosen sorting criterion.
+    void Sort(const char* showName,char* input);
     //Modify the details of an existing character.
     void updateChar(const char * updateCharacter,char * UpdateAge,char * UpdateSPA);
 };
