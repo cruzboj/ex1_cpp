@@ -8,10 +8,10 @@
 //g++ main.cpp FileReader.cpp -o ...
 class Character {
 public:
-    char* name;   // Character name
-    char* SPA;    // Special Power Ability (SPA)
-    char* age;      // Character age
-    Character* next; // Pointer to the next character
+    char* name;   
+    char* SPA;    
+    char* age;      //char for unknown (i asked yuval and he said i should change it to char *)
+    Character* next;
 
     Character() : name(nullptr), SPA(nullptr), age(nullptr), next(nullptr) {}
     ~Character();
@@ -24,9 +24,9 @@ public:
 
 class TvShow {
 public:
-    char* name;       // Show name
-    Character* cast;  // Pointer to the head of the character list
-    TvShow* next;     // Pointer to the next show (for a linked list of shows)
+    char* name;       
+    Character* cast;  
+    TvShow* next;    
 
     TvShow() : name(nullptr), cast(nullptr), next(nullptr) {}
     ~TvShow();

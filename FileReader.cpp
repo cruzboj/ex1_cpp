@@ -57,7 +57,6 @@ void linklist::printShows() const {
     while (tempShow) {
         std::cout << "Show: " << tempShow->name << std::endl;
 
-        // Print the list of characters in the show
         Character* tempCharacter = tempShow->cast;
         while (tempCharacter) {
             std::cout << "  Character: " << tempCharacter->name
@@ -158,9 +157,8 @@ void linklist::updateChar(const char * updateCharacter,char * UpdateAge,char * U
 void linklist::Sort(const char* showName,char* input) {
     TvShow* tempShow = head;
     while (tempShow) {
-        // Find the correct TV Show based on the name
+
         if (strcmp(showName, tempShow->name) == 0) {
-            // Check input for sorting criterion
             if (strcmp(input, "1") == 0) {
                 // Sorting by character name alphabetically
                 bool swapped;
@@ -170,9 +168,7 @@ void linklist::Sort(const char* showName,char* input) {
                     while (current && current->next) {
                         Character* nextCharacter = current->next;
 
-                        // Compare names lexicographically (alphabetically)
                         if (strcmp(current->name, nextCharacter->name) > 0) {
-                            // Swap character data: name, age, and SPA
                             std::swap(current->name, nextCharacter->name);
                             std::swap(current->age, nextCharacter->age);
                             std::swap(current->SPA, nextCharacter->SPA);
@@ -182,11 +178,19 @@ void linklist::Sort(const char* showName,char* input) {
 
                         current = current->next;
                     }
-                } while (swapped); // Continue until no more swaps are made
+                } while (swapped);
                 std::cout << "Sorting by character name alphabetically complete!" << std::endl;
+
+                Character* tempCharacter = tempShow->cast;
+                while (tempCharacter) {
+                    std::cout << "  Character: " << tempCharacter->name
+                              << ", Age: " << tempCharacter->age
+                              << ", Special Ability: " << tempCharacter->SPA << std::endl;
+                    tempCharacter = tempCharacter->getNext();
+                }
             
             }else if(strcmp(input, "2") == 0){
-                // Sorting by character age
+                //sorting by character ages
                 bool swapped;
                 do {
                     swapped = false;
@@ -194,13 +198,7 @@ void linklist::Sort(const char* showName,char* input) {
                     while (current && current->next) {
                         Character* nextCharacter = current->next;
 
-                        // Convert char* age to integers for numerical comparison
-                        int currentAge = std::stoi(current->age); // Convert current age to int
-                        int nextAge = std::stoi(nextCharacter->age); // Convert next age to int
-
-                        // Compare ages numerically
-                        if (currentAge > nextAge) {
-                            // Swap character data: name, age, and SPA
+                        if (strcmp(current->age, nextCharacter->age) > 0) {
                             std::swap(current->name, nextCharacter->name);
                             std::swap(current->age, nextCharacter->age);
                             std::swap(current->SPA, nextCharacter->SPA);
@@ -210,22 +208,47 @@ void linklist::Sort(const char* showName,char* input) {
 
                         current = current->next;
                     }
-                } while (swapped); // Continue until no more swaps are made
-                std::cout << "Sorting by character ages complete!" << std::endl;
-            }else if(strcmp(input, "3") == 0){
-                
-            }else if(strcmp(input, "4") == 0){
-                
+                } while (swapped);
+                std::cout << "Sorting by character name alphabetically complete!" << std::endl;
+
+                Character* tempCharacter = tempShow->cast;
+                while (tempCharacter) {
+                    std::cout << "  Character: " << tempCharacter->name
+                              << ", Age: " << tempCharacter->age
+                              << ", Special Ability: " << tempCharacter->SPA << std::endl;
+                    tempCharacter = tempCharacter->getNext();
+                }
+
+            }else if(strcmp(input, "3") == 0 || strcmp(input,"4")==0){
+                // Reverse
+                Character* prev = nullptr;
+                Character* current = tempShow->cast;
+                Character* next = nullptr;
+
+                while (current) {
+                    next = current->getNext();
+                    current->setNext(prev);    
+                    prev = current;            
+                    current = next;
+                }
+
+                tempShow->cast = prev;
+                std::cout << "Reversed the character list!" << std::endl;
+            
+                Character* tempCharacter = tempShow->cast;
+                while (tempCharacter) {
+                    std::cout << "  Character: " << tempCharacter->name
+                              << ", Age: " << tempCharacter->age
+                              << ", Special Ability: " << tempCharacter->SPA << std::endl;
+                    tempCharacter = tempCharacter->getNext();
+                }
+
             }else
                 std::cout << "\033[31myou didnt choose numbers in range of 1-4\033[0m" << std::endl;
-
-            break; // Exit after sorting the specified show
+            break;
         }
-
-        tempShow = tempShow->next;  // Move to the next show
+        tempShow = tempShow->next;
     }
-
-    // If the show was not found, print an error message
     if (!tempShow) {
         std::cout << "\033[31mTV Show was not found\033[0m" << std::endl;
     }
