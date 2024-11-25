@@ -47,11 +47,19 @@ private:
 public:
     linklist() : head(nullptr) {}
     ~linklist();
-
+    //take from file + Input details of a new character and add them to the appropriate TV show.
     void addShow(const char* showName, const char* charName, char * charAge, const char* spa);
+    
+    //Show all TV shows in your catalog along with their respective characters.
     void printShows() const;
+    //Remove a character by name from a TV show.
     void deleteChar(char * deletedCharacter);
+    //Find and display a character by name across all TV shows.
     void SearchChar(char * findCharacter) const;
+    //
+
+    //Modify the details of an existing character.
+    void updateChar(const char * updateCharacter,char * UpdateAge,char * UpdateSPA);
 };
 
 

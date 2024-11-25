@@ -87,7 +87,7 @@ void linklist::deleteChar(char * deletedCharacter){
                     delete[] tempCharacter->name;
                     delete[] tempCharacter->age;
                     delete[] tempCharacter->SPA;
-                    std::cout << "\033[31mcharacter " << deletedCharacter << " deleted\033[0m" << std::endl;
+                    std::cout << "\033[31mcharacter " << deletedCharacter << " has been deleted\033[0m" << std::endl;
                     return;
             }
             prevCharacter = tempCharacter;
@@ -112,6 +112,40 @@ void linklist::SearchChar(char * findCharacter) const{
                                 << ", Age: " << tempCharacter->age
                                 << ", Special Ability: " << tempCharacter->SPA << std::endl;
                     return;
+            }
+            tempCharacter = tempCharacter->next;
+        }
+        tempShow = tempShow->next;
+    }
+    std::cout << "\033[31mcharacter was not found\033[0m" << std::endl;
+    return;
+}
+
+void linklist::updateChar(const char * updateCharacter,char * UpdateAge,char * UpdateSPA){
+    TvShow* tempShow = head;
+
+    while (tempShow){
+        Character* tempCharacter = tempShow->cast;
+
+        while (tempCharacter){
+            if(strcmp(updateCharacter,tempCharacter->name) == 0){
+                    if(strcmp("NONE",UpdateAge)==0)
+                    {
+                        strcpy(tempCharacter->SPA,UpdateSPA);
+                        std::cout << "\033[33mcharacter character specialAbility has been Updated\033[0m" << std::endl;
+                        return;
+                    }
+                    else if(strcmp("NONE",UpdateAge)==0){
+                        strcpy(tempCharacter->age,UpdateAge);
+                        std::cout << "\033[33mcharacter Age has been Updated\033[0m" << std::endl;
+                        return;
+                    }
+                    else{
+                        strcpy(tempCharacter->SPA,UpdateSPA);
+                        strcpy(tempCharacter->age,UpdateAge);
+                        std::cout << "\033[33mcharacter age and specialAbility has been Updated\033[0m" << std::endl;
+                        return;
+                    }
             }
             tempCharacter = tempCharacter->next;
         }
